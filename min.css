@@ -1,0 +1,1001 @@
+/* === RESET / BASE === */
+* {
+   
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #121212;
+    line-height: 1;
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex: 1;
+  }
+  
+
+
+  body.startpage {
+     background-color: #F5F5F5;
+  background-image: url("bilder/bakgrund.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body.gallery-page {
+  
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(255, 254, 254, 0.982);
+  background-blend-mode: multiply;
+  transition: background-color 2.3s ease;
+}
+
+.corner-image {
+  position: fixed;
+  top: 20px;         
+  left: -100px;      /* börja utanför till vänster */
+  width: 1rem;       
+  height: auto;
+  opacity: 0;        
+  pointer-events: none;
+  transition: left 0.6s ease, opacity 0.6s ease;
+  z-index: 999;
+}
+
+.corner-image.visible {
+  left: 25px;        /* slutposition */
+  opacity: 1;
+}
+
+
+@keyframes bgSlideUp {
+  from {
+    background-position: center 890%; /* starta lite nedanför */
+    opacity: 0;
+  }
+  to {
+    background-position: center 50%;  /* normal position */
+    opacity: 1;
+  }
+}
+
+body.startpage.bg-slide-up {
+  animation: bgSlideUp 3s ease forwards;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fcfcfc3f;
+}
+
+
+
+
+.bg-circle {
+  position:absolute;
+  border-radius: 50%;
+  z-index: -1; /* Bakom allt innehåll */
+ 
+  will-change: transform;
+
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+
+}
+
+.circle1 {
+  width: 100%;
+  height: 20.7rem;
+  background-color: #aeb65a;
+  top: 285px;
+  left: 0;          /* flytta tillbaka */
+  border-radius: 0;
+  animation-name: slideInFromLeft;
+  animation-delay: 0s;
+  animation-duration: 2s;
+}
+
+.circle2 {
+  width: 90rem;              /* bredare än hög */
+  height: 20vw;             /* lägre än bred */
+  background-color: #f4f4f4de; 
+  bottom: -45vw;
+  animation-name: slideInFromRight;
+  animation-delay: 0s;
+  animation-duration: 4s;
+  border-radius: 0;   
+  overflow: hidden;
+  position: absolute;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 0.7;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(90vw);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+ 
+.slide-in-bottom {
+  animation: slideInFromBottom 0.7s ease forwards;
+  animation-duration: 1.2s;
+  
+}
+
+
+ header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  line-height: 0.7;
+  padding: 1rem 2rem;
+  
+}
+  
+
+  
+  /* === TYPOGRAPHY === */
+ 
+
+
+
+h1 {
+  font-weight: 700;
+  font-size: clamp(3rem, 8vw, 5.75rem); /* 48px – 140px */
+  color: var(--accent-color);
+  
+  
+}
+
+h2 {
+  font-weight: 700;
+  font-size: clamp(1.2rem, 4vw, 1.5rem); 
+    color: var(--accent-color);
+  
+}
+header h2 {
+  font-size: clamp(1.6rem, 4vw, 2rem); 
+}
+h3 {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 700;
+  text-align: left;
+  font-size: clamp(2.3rem, 5vw, 2.5rem); /* ca 32px – 56px */
+  line-height: 0.7;
+  padding-bottom: 1%;
+}
+
+h4 {
+  font-weight: 500;
+  text-align: left;
+  font-size: clamp(1rem, 3vw, 1.5rem); /* ca 16px – 24px */
+  line-height: 1;
+  padding-bottom: 3%;
+  max-width: 600px;
+}
+
+h5 {
+    font-size: clamp(1rem, 3vw, 1.3rem); /* ca 16px – 24px */
+    margin-bottom: 0.3rem;
+}
+
+h6 {
+    font-weight: 600;
+    margin-bottom: 0.5em;
+  }
+
+p {
+
+  font-size: clamp(0.900rem, 2.5vw, 1rem); /* ca 16px – 16px */
+  line-height: 1.1;
+ 
+}
+  
+  /* === LINKS === */
+  a {
+    color: #121212;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #cad112;
+  }
+  
+  /* === LAYOUT HELPERS === */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .flex {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  
+  
+  /* === BUTTONS === */
+
+
+
+  button:hover {
+    cursor: pointer;
+    
+  }
+  
+  .navbar {
+    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right;
+   line-height: 1.7; 
+  font-weight: 800;
+  font-size: clamp(1rem, 2vw, 1.325rem); /* ca 16px – 25px */
+  
+}
+
+li {
+  list-style: none;
+}
+
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+ .navbar2 {
+ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right;
+  line-height: 0.0001;
+  font-weight: 800;
+  font-size: clamp(1rem, 2vw, 1.325rem); /* samma här */
+}
+
+  .navbar2 ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+.about-section {
+  display: flex;
+  align-items: flex-start;  /* behåller vertikal alignment */
+  justify-content: center;  /* centrerar elementen horisontellt */
+  gap: 2rem;                /* valfritt mellanrum mellan bild och text */
+  flex-wrap: wrap;           /* gör att de kan brytas på små skärmar */
+}
+
+  .about-img {
+  width: 25rem;
+  display: block;
+  animation-name: slide-in-bottom;
+  animation-duration: 1.2s;
+}
+
+.about-text {
+  margin-top: 3rem;  /* behåll om du vill ha lite luft uppifrån */
+  margin-left: 1rem;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+
+.text-box {
+  position: relative;  /* blir "förälder" för mywork */
+  background-color:  rgba(255, 254, 254, 0.982);
+  padding: 3rem 10rem 5rem;
+  border-radius: 3px;
+  max-width: 100%;
+  margin: 2rem auto 0 auto;
+  font-family: Helvetica, sans-serif;
+ 
+  color: #121212;
+  box-shadow: 1px 1px 3px rgba(32, 32, 32, 0.43);
+
+}
+
+.mywork {
+  position: absolute; 
+  bottom: -60%;   /* alltid samma relation – justera procentsatsen */
+  right: 6%;      /* alltid samma relation – justera procentsatsen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: transform 0.4s ease;
+}
+
+.mywork img {
+  width: clamp(240px, 30vw, 350px);  
+  height: auto;
+}
+
+.mywork:hover {
+  animation: wiggle 0.8s ease-in-out; /* längre tid än innan */
+}
+
+@keyframes wiggle {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(6deg); }   /* lite större vinkel */
+  50%  { transform: rotate(-6deg); }
+  75%  { transform: rotate(4deg); }
+  100% { transform: rotate(0deg); }
+}
+  #B3557D
+
+  .portfolio p {
+    text-align: right;
+    margin-bottom: 1rem;
+  }
+
+  
+  .gallery {
+    display: flex;
+    flex-direction: column; /* Viktigt: en kolumn så varje projekt hamnar på egen rad */
+    gap: 1rem;
+    flex-wrap: nowrap; /* Inget wrap här */
+  
+  }
+
+  .gallery-mobile {
+    display: none;
+  }
+
+  .start-mobile {
+    display: none;
+  }
+
+  
+  .item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  width: 90%;           /* fast bredd för boken */
+  height: 45rem;        /* fast höjd för boken */
+  gap: 1rem;
+  align-items: flex-start;
+  background-color: #fcfcfc;
+  border-radius: 1px;
+  padding: 0 5rem 5rem 5rem;
+  overflow: hidden;       /* om du vill kapa innehåll som sticker ut */
+  box-sizing: border-box;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.43);
+  transition: transform 0.4s ease;
+  flex-wrap: wrap;
+  text-align: right;
+  margin: 0 auto 2rem auto;
+
+}
+
+
+.item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, #999, #ccc, #c4c2c2);
+  opacity: 0.2;
+  z-index: 2;
+  
+}
+
+.book {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  
+}
+
+.page {
+  width: 100%;
+  height: auto;
+  flex: 0 0 100%;
+  display: none;
+  flex-direction: row;
+  gap: 1rem;
+
+}
+
+.page.active {
+  display: flex;
+  
+}
+
+.page .left,
+.page .right {
+  flex: 1;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+
+}
+
+
+.page .right {
+  
+  text-align: left;
+  
+}
+
+.page .right p {
+  
+  max-width: 27rem;
+ 
+}
+
+.page .left {
+  
+  text-align: right;
+  
+
+}
+
+.page .left p {
+  
+  max-width: 27rem;
+   margin-left: auto;  /* puttar allt mot höger */
+}
+
+button.prev,
+button.next {
+  position: absolute;
+  top: 50%;
+  color:#121212; 
+  font-size: 1.3rem;
+  transform: translateY(-50%);
+  border: none;
+  padding: 0.5rem;
+  z-index: 3;
+  background-color:#fcfcfc;
+  
+}
+
+button.prev {
+  left: 1rem;
+}
+
+button.next {
+  right: 1rem;
+}
+
+  .item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .item img {
+     max-width: 90%;
+max-height: 90%;
+width: auto;
+height: auto;
+object-fit: contain;
+margin: auto;
+display: block;
+  }
+
+  
+  .info {
+   
+    flex: 1;
+    min-width: 200px;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: right;
+  
+  
+  }
+ 
+   /* galleri */
+  .moreinfo {
+   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;     /* Centrerar innehållet horisontellt */
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem 5%;
+  margin: 0 auto;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.textblock {
+
+ flex: 1 1 400px;          /* Gör den flexibel: väx, krymp, minsta bredd */
+  max-width: 27rem;         /* Maxbredd så den inte blir för bred */
+  padding: 1rem 5% 2rem 5%; /* Mer flexibel padding istället för fasta % */
+  box-sizing: border-box;
+  text-align: right;
+}
+  
+.bildblock img {
+  
+  width: 100%;              /* Tar upp hela bredden i sin behållare */
+  max-width: 500px;
+  height: auto;
+  flex-shrink: 1;
+  padding: 1rem 5% 2rem 5%;
+  box-sizing: border-box;
+  }
+
+  .info h3 {
+    margin-bottom: 0.5rem;
+    text-wrap: right;
+
+  }
+  
+  .info p {
+    font-size: 1rem;
+    color: #121212;
+    display: flex;
+    padding: 1rem;
+    text-align: right;
+   
+
+  }
+
+.slideshow-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ 
+  /* Slideshow-bilder */
+.slideshow img.slide {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: none;
+  margin: auto;
+
+
+}
+
+.slideshow img.slide.active {
+  display: block;
+}
+  
+  
+
+
+    .galleri-mobil {
+      position: relative;
+      width: 600px;
+      height: 400px;
+    }
+
+    .galleri-mobil img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #B3557D;
+  }
+  .social-footer {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.social-footer a {
+  color: black;
+  transition: transform 0.2s;
+}
+
+.social-footer a:hover {
+  transform: scale(1.2);
+  
+}
+
+#footer-start {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+ 
+}
+
+video {
+  width: 100%;
+  height: auto;
+  object-fit:cover;
+  pointer-events: none;
+  
+}
+
+  
+  @media (max-width: 968px) {
+
+    .body{
+      overflow: hidden;
+    }
+
+   h3 {
+    margin-left: 2rem;
+   }
+
+     .circle1 {
+display: none;
+
+}
+.circle2 {
+  width: 100%;              /* bredare än hög */
+  height: 80%;             /* lägre än bred */
+  background-color: #f4f4f4de; 
+  top: 45vw;
+  animation-name: slideInFromLeft;
+  animation-delay: 0s;
+  animation-duration: 1.7s;
+  border-radius: 0;   
+  
+}
+  
+
+  .about-section {
+    flex-direction: column;
+    align-items: center; /* valfritt – centrerar innehållet */
+  }
+
+  .about-img {
+    
+    margin-bottom: 10px; /* lägg till luft under bilden */
+    width: 50%;
+    max-width: 400px; /* valfri begränsning */
+     animation-duration: 1.7s;
+    align-self: flex-start;
+  }
+
+  .about-text {
+    margin: 0;
+    padding: 25px;
+    text-align: left; /* valfritt för bättre läsbarhet på mobil */
+    
+  }
+
+
+  .mywork {
+   display: none;
+  
+  }
+  .mywork img {
+  display: none;
+  }
+
+   .moreinfo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .imageblock img {
+    width: 100%;
+    max-width: 400px;
+  }
+   .bildblock img {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .textblock {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .corner-image {
+  position: fixed;
+  top: 10px;         
+  left: -100px;      /* börja utanför till vänster */
+  width: 0.9rem;       
+  height: auto;
+  opacity: 0;        
+  pointer-events: none;
+  transition: left 0.6s ease, opacity 0.6s ease;
+  z-index: 999;
+}
+
+.corner-image.visible {
+  left: 18px;        /* slutposition */
+  opacity: 1;
+}
+
+.item {
+    flex-direction: column;   /* stapla innehåll istället för rad */
+    width: 100%;              /* fyll hela mobilens bredd */
+    height: auto;             /* låt höjden styras av innehållet */
+    padding: 1rem;            /* mindre padding så det inte känns trångt */
+    text-align: left;         /* text vänsterjusterad = lättare att läsa på mobil */
+    gap: 0.5rem;              /* mindre mellanrum */
+  }
+
+  .gallery {
+    gap: 2rem; /* lite mer luft mellan korten på mobil */
+  }
+
+
+}
+
+  
+
+
+
+@media (max-width: 880px) {
+
+    .body{
+      overflow-x: hidden;
+    }
+
+    body.startpage {
+    background-image: url("bilder/bakgrund-mobil.png");
+    
+}
+ body.startpage.bg-slide-up {
+    animation: bgSlideUp 2s ease forwards; /* samma animation */
+  }
+
+   .navbar {
+    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right;
+   line-height: 0.1; 
+
+  
+}
+   .navbar2 ul {
+  
+  
+   gap: 1rem;
+
+  
+}
+  .about-section{
+    flex-direction: column;
+  }
+
+  .about-text {
+    order: 1;
+    font-size: 1rem; /* mindre text */
+    max-width: 25rem;
+    text-align: left; /* kanske bättre på riktigt liten skärm */
+  }
+
+.about-img{
+  order: 2;
+  margin-top: 2rem;
+  margin-left: 0;
+  margin-bottom: 0;
+  transition-delay: 2s;
+}
+  .mywork {
+    display: none;
+  }
+
+  .imageblock img,
+  .bildblock img {
+    max-width: 100%; /* fyll hela bredden */
+  }
+  
+  .start-mobile {
+    display: flex;
+  }
+
+  .gallery {
+    display: none;
+    
+  }
+
+  .gallery-mobile {
+  display: flex;
+  flex-direction: column; /* stapla projekten */
+  gap: 1rem;              /* 2rem mellan varje projekt */
+  padding: 2%;
+  
+}
+  
+    .item-mobile {
+      display: flex;
+    flex-direction: column;   /* stapla innehåll */
+    width: 100%;              /* fyll hela skärmen */
+    padding: 1rem;            /* mindre padding på mobil */
+    text-align: left;         /* lättare att läsa på mobil */
+    position: relative;
+    background-color: #fcfcfc; 
+     box-shadow: 0 2px 2px rgba(0,0,0,0.3);
+     border-radius: 0.2rem;
+    
+  }
+   .book-mobile {
+    width: 90%;
+    
+    margin: 0 auto;
+
+   }
+
+
+  .page-mobile {
+    display: none;
+    
+  }
+
+  .page-mobile.active {
+    display: block;
+  }
+  .page-mobile img {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+  }
+
+   .slideshow-mobile .slide {
+    display: none;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin: auto;
+  }
+
+  .slideshow-mobile .slide.active {
+    display: block;
+  }
+
+
+  .project-text-mobile {
+    padding: 0 2rem 2rem 2rem;
+    text-align: left;
+    max-width: 25rem;
+  }
+  
+.prev-mobile,
+  .next-mobile {
+    position: absolute;
+    top: 37%;
+    background-color:#fcfcfc00;
+    color:#121212; 
+    border: none;
+    border-radius: 0; 
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 3;
+  
+  }
+
+  .prev-mobile { left: 10px; }
+  .next-mobile { right: 10px; }
+
+  .text-box {
+    padding: 4rem;
+   } 
+
+ .item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: none;
+  opacity: 0.2;
+  z-index: 2;
+  
+}
+
+
+}
+
+:root {
+  --accent-color: #121212;
+}
+
+a, .highlight {
+  color: var(--accent-color);
+}
+
+#scrollToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 3%;
+  z-index: 1000;
+  display: none;
+  background-color: #212121;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#scrollToTop:hover {
+  background-color: #cad112;
+  transform: scale(1.4);
+}
+
+.bg-video {
+   position: fixed;
+  width: 30%;
+  height: 40%;
+  object-fit: cover;
+  z-index: -1;
+  
+  /* centrering */
+  top: 40%;            /* placera mitten av videon på 50% höjd */
+  left: 50%;           /* placera mitten av videon på 50% bredd */
+  transform: translate(-50%, -50%); 
+}
+
