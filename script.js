@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================
   if (document.body.classList.contains('gallery-page')) {
     window.addEventListener('scroll', function() {
-      const maxDarkness = 0.07;
+      const maxDarkness = 0.06;
       const maxScroll = 500;
       let darkness = window.scrollY / maxScroll;
       if (darkness > maxDarkness) darkness = maxDarkness;
