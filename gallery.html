@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stina Karlsson – Projects</title>
+  <link rel="stylesheet" href="stil.css">
+  <link rel="icon" href="bilder/favicon.png" type="image/png">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">Stina Birgitta Karlsson</a>
+    <nav>
+      <a href="gallery.html" aria-current="page">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Omslag: en knapp per bild. data-open pekar på id:t för projektets popup längre ner.
+       Flera bilder kan öppna samma projekt. -->
+  <main class="work">
+
+  <!-- ═══ KOLUMN 1 (ungefär) ═══ -->
+  <!--  1 Nora & Johan   --> <button class="thumb" data-open="nora-johan"><img src="bilder/invite.jpg" alt="Nora &amp; Johan" loading="lazy"></button>
+  <!--  2 Ourleak        --> <button class="thumb" data-open="ourleak"><img src="bilder/fools.jpg" alt="Ourleak" loading="lazy"></button>
+  <!--  3 Nora & Johan   --> <button class="thumb" data-open="nora-johan"><img src="bilder/menyopen1.jpg" alt="Nora &amp; Johan, menu" loading="lazy"></button>
+  <!--  4 Brand book     --> <button class="thumb" data-open="brand-book" aria-label="Interactive brand book"><video src="bilder/brainspelning.mp4" autoplay muted loop playsinline preload="metadata"></video></button>
+
+  <!-- ═══ KOLUMN 2 (ungefär) ═══ -->
+  <!--  5 Print          --> <button class="thumb" data-open="print"><img src="bilder/SK.png" alt="EducateIt" loading="lazy"></button>
+  <!--  6 Trapp          --> <button class="thumb" data-open="ourleak"><img src="bilder/ourleak.jpg" alt="Ourleak" loading="lazy"></button>
+  <!--  7 JB             --> <button class="thumb" data-open="jb" aria-label="JB"><video src="bilder/jbfilm.mp4" autoplay muted loop playsinline preload="metadata"></video></button>
+  <!--  8 Movement       --> <button class="thumb" data-open="movement"><img src="bilder/visualisering.png" alt="Movement" loading="lazy"></button>
+
+  <!-- ═══ KOLUMN 3 (ungefär) ═══ -->
+  <!--  9 Posters        --> <button class="thumb" data-open="posters"><img src="bilder/Posterfinal.png" alt="Posters" loading="lazy"></button>
+  <!-- 10 Nora & Johan   --> <button class="thumb" data-open="nora-johan"><img src="bilder/menyclosed.jpg" alt="Nora &amp; Johan, menu" loading="lazy"></button>
+  <!-- 11 Brand book     --> <button class="thumb" data-open="brand-book" aria-label="Interactive brand book"><video src="bilder/folder.mp4" autoplay muted loop playsinline preload="metadata"></video></button>
+  <!-- 12 Handskriven    --> <button class="thumb" data-open="handskriven"><img src="bilder/framsida.png" alt="Handskriven" loading="lazy"></button>
+
+  <!-- ═══ KOLUMN 4 (ungefär) ═══ -->
+  <!-- 13 Ourleak        --> <button class="thumb" data-open="trapp"><img src="bilder/trapp1.png" alt="Trapp" loading="lazy"></button>
+  <!-- 14 Movement       --> <button class="thumb" data-open="movement" aria-label="Movement"><video src="bilder/anima.mp4" autoplay muted loop playsinline preload="metadata"></video></button>
+  <!-- 15 Print          --> <button class="thumb" data-open="print"><img src="bilder/SL.png" alt="Flyer" loading="lazy"></button>
+  <!-- 16 KalleBus       --> <button class="thumb" data-open="kallebus"><img src="bilder/KB1.png" alt="KalleBus AB" loading="lazy"></button>
+  <!-- 17 Kalender       --> <button class="thumb" data-open="kalender"><img src="bilder/januari25.png" alt="Wall calendar 2025" loading="lazy"></button>
+
+</main>
+
+  <!-- Popups: en per projekt -->
+      <dialog id="nora-johan" aria-labelledby="nora-johan-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="nora-johan-title">Nora &amp; Johan</h2>
+            <span class="popup-cat">Print, illustration &amp; graphics</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+          <p>Typographic layout + carved and hand printed linoleum motif. Invitation and dinner menu.</p>
+        <br>
+          <p class="tools">
+            <b>Tools:</b> Adobe Illustrator for illustration, InDesign for text, soft cut linoleum for print</p>
+            </div>
+            <div class="popup-media">
+              <img src="bilder/invite.jpg" alt="Invitation" loading="lazy">
+          <video src="bilder/inbjudan.mp4" muted loop playsinline preload="none"></video>
+          <img src="bilder/menyclosed.jpg" alt="Menu, closed" loading="lazy">
+          <img src="bilder/menyopen.jpg" alt="Menu, open" loading="lazy">
+          
+          <img src="bilder/meny_bord.jpg" alt="Menu on table" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="ourleak" aria-labelledby="ourleak-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="ourleak-title">Our leak</h2>
+            <span class="popup-cat">Graphic design</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+             <p>Visual direction and art work for Johannes Åslund, EP and single. </p> 
+             <br><p class="tools"><b>Tools:</b> Illustrator, AfterEffects</p> 
+            </div>
+            <div class="popup-media">
+          <img src="bilder/ourleak.jpg" alt="Ourleak" loading="lazy">
+           <img src="bilder/insta2_stående.png" alt="Ourleak" loading="lazy">
+          <img src="bilder/fools.jpg" alt="Ourleak" loading="lazy">
+           <video src="bilder/foolsfilm.mp4" muted loop playsinline preload="none"></video>
+          
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="print" aria-labelledby="print-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="print-title">Print material</h2>
+            <span class="popup-cat">Graphic design</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+              <h3>Flyers</h3>
+          <p>Flyers for EducateIt, presented at fairs in Stockholm.</p>
+          <p>Layout focusing on hierarchy and dimension in size as well as managing big amounts of text while remaining readable. Working with defined brand colors and typography.</p>
+          <h3>Reading material</h3>
+          <p>Bookmarks for Polylino (school) and Polyglutt (pre-school). Working with defined brand colors and typography, and existing Polyglutt illustration figures by Tinterova.</p>
+          <br>
+          <p>Foldable dice to gamify book analysis for young students, for Polylino.</p>
+          <br>
+          <p class="tools"><b>Tools:</b> InDesign, Illustrator, Figma</p>
+            </div>
+            <div class="popup-media">
+          <img src="bilder/EI.png" alt="Flyer" loading="lazy">
+          <img src="bilder/SK.png" alt="Flyer" loading="lazy">
+          <img src="bilder/SL.png" alt="Flyer" loading="lazy">
+          <img src="bilder/bookmark.jpg" alt="Bookmark" loading="lazy">
+          <img src="bilder/dice.jpg" alt="Foldable dice" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="brand-book" aria-labelledby="brand-book-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="brand-book-title">Interactive brand book</h2>
+            <span class="popup-cat">Thesis project, graphic design, UI</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+          <p>Interactive brand book for ILT Education's products called "folder".</p>
+          <p>Brief: Transform existing brand guidelines and graphic assets into a more accessible and practical resource for both internal and external use.</p>
+          <br><p>I designed an explorative digital experience that connects to ILT Education’s existing design systems and makes brand assets, guidelines, and visual information easy to navigate and understand.</p>
+          <br><p>Navigation inspired by physical files.</p>
+        
+          <p>Connected to the organization's design system components, making it constantly updated to latest changes.</p>
+          <br><p>Figma structure, layout and visual concept by me.</p>
+          <br><p class="tools"><b>Tools:</b> Figma Design, Figma Site</p>
+          <h3>Promotional video production</h3>
+          <p class="tools"><b>Tools:</b> Canva, Adobe After Effects</p>
+            </div>
+            <div class="popup-media">
+          
+          <video src="bilder/brainspelning.mp4" muted loop playsinline preload="none"></video>
+          <img src="bilder/A4mapp.png" alt="Brand book folder" loading="lazy">
+          <video src="bilder/folder.mp4" muted loop playsinline preload="none"></video>
+          
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="kalender" aria-labelledby="kalender-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="kalender-title">Wall calendar</h2>
+            <span class="popup-cat">Graphic design</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+          <p>Monthly calendar to print. Yearly design project exploring layout, function, and my own visual associations with different months.</p>
+          <p>Interested in having it on your wall? <a href="mailto:stinabirgittak@gmail.com">Send me an email</a> and we'll sort you out :)</p>
+          <p class="tools"><b>Tools:</b> Adobe Illustrator, InDesign</p>
+            </div>
+            <div class="popup-media">
+          <img src="bilder/januari25.png" alt="January" loading="lazy">
+          <img src="bilder/februari25.png" alt="February" loading="lazy">
+          <img src="bilder/mars25.png" alt="March" loading="lazy">
+          <img src="bilder/april25.png" alt="April" loading="lazy">
+          <img src="bilder/maj25.png" alt="May" loading="lazy">
+          <img src="bilder/juni25.png" alt="June" loading="lazy">
+          <img src="bilder/juli25.png" alt="July" loading="lazy">
+          <img src="bilder/augusti25.png" alt="August" loading="lazy">
+          <img src="bilder/september25.png" alt="September" loading="lazy">
+          <img src="bilder/oktober25.png" alt="October" loading="lazy">
+          <img src="bilder/november25.png" alt="November" loading="lazy">
+          <img src="bilder/december25.png" alt="December" loading="lazy">
+          
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="kallebus" aria-labelledby="kallebus-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="kallebus-title">KalleBus AB</h2>
+            <span class="popup-cat">Logotype and visual identity</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+          <p>Logotype for Kalle Johansson, journalist and radio producer.</p>
+          <br>
+          <p class="tools"><b>Tools:</b> Adobe Illustrator</p>
+            </div>
+            <div class="popup-media">
+          <img src="bilder/KB1.png" alt="KalleBus logotype" loading="lazy">
+         <img src="bilder/KB4.png" alt="KalleBus logotype" loading="lazy">
+          <img src="bilder/KB3.png" alt="KalleBus logotype" loading="lazy">
+          
+          <img src="bilder/KB5.png" alt="KalleBus logotype" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="posters" aria-labelledby="posters-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="posters-title">Posters</h2>
+            <span class="popup-cat">Graphic design</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+              <h3>Mål 16</h3>
+          <p>Made to spread the word for a lecture given at Kulturhuset.</p>
+          <p>Inspired by the constructivist avant-garde art movement.</p>
+          <p>The concept of transparency shaped both layout and typography. A layered hierarchy and generous white space for clarity and impact.</p>
+          <p class="tools"><b>Tools:</b> Adobe Illustrator</p>
+          <h3>Classroom posters</h3>
+          <p>For Begreppa, ILT Education. Inspired by vintage school posters.</p>
+          <p class="tools"><b>Tools:</b> Adobe Illustrator</p>
+            </div>
+            <div class="popup-media">
+          <img src="bilder/Posterfinal.png" alt="Poster" loading="lazy">
+          <img src="bilder/process.poster.png" alt="Moodboard" loading="lazy">
+          <img src="bilder/four1.png" alt="Classroom posters" loading="lazy">
+          <img src="bilder/four2.png" alt="Classroom posters" loading="lazy">
+          <img src="bilder/two.png" alt="Classroom posters" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="movement" aria-labelledby="movement-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="movement-title">Movement</h2>
+            <span class="popup-cat">Code installation</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+          
+          <p>Using JavaScript code to track movement and generate live dynamic visuals with different sound depending on how the user moves. Collaboration between me and designer Ellen Karlsson.</p>
+       
+          <h3>Process</h3>
+          <p>A camera captures your body and picks up keypoints from head to toe. The keypoints leave a trace of lines when you move to create a visual representation of the body, linking your movement to a digital expression.</p>
+          <br><p>We explored how to use the body as a tool for creating visuals, and how to make the experience fun and engaging for the user.</p> <br>
+   <p class="tools"><b>Tools:</b> Visual Studio Code, p5js Web Editor, Ml5.js</p>
+          
+            </div>
+            <div class="popup-media">
+          <video src="bilder/anima.mp4" muted loop playsinline preload="none"></video>
+          <img src="bilder/kppp2.png" alt="Movement installation" loading="lazy">
+          <img src="bilder/kp.jpg" alt="Movement installation" loading="lazy">
+            <img src="bilder/mbcrepro.png" alt="Process" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="jb" aria-labelledby="jb-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="jb-title">Website</h2>
+            <span class="popup-cat">Webdesign and code</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+              <p>Website for music producer Jonas Bergdahl.</p>
+              <br> <p class="tools"><b>Tools: Code and Figma Design</b></p> 
+            </div>
+            <div class="popup-media">
+          <video src="bilder/jbfilm.mp4" muted loop playsinline preload="none"></video>
+          <img src="bilder/JBB.png" alt="website" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="kide" aria-labelledby="kide-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="kide-title">Kide Science</h2>
+            <span class="popup-cat">Educational printables</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+          <p>For ILT Education's different markets.</p>
+          <p>By linking text, language and visual elements to variables and components, multiple versions can be generated and updated efficiently without manually rebuilding each design.</p>
+          <p>The focus was on consistency and an efficient production workflow, making the system easy to adapt for different markets, campaigns, and future needs.</p>
+          <p>Investigator badges to hand out to students on a scientific task. Language changes through variables in Figma, directly linked to CSV translation files.</p>
+          <p class="tools"><b>Tools:</b> Adobe Illustrator, Figma</p>
+            </div>
+            <div class="popup-media">
+          <img src="bilder/kide1.jpg" alt="Kide certificate" loading="lazy">
+          <img src="bilder/KIDE2.jpg" alt="Kide badge" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="handskriven" aria-labelledby="handskriven-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="handskriven-title">Handskriven</h2>
+            <span class="popup-cat">Typeface design</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+          <p>I was interested in what my handwriting would look like on the web, which naturally resulted in making it into a typeface. The alphabet drawn onto the closest piece of paper I had, scanned and outlined in Illustrator.</p>
+          <br>
+          <p class="tools"><b>Tools:</b> Adobe Illustrator, Calligraphr</p>
+            </div>
+            <div class="popup-media">
+          <img src="bilder/framsida.png" alt="Typeface cover" loading="lazy">
+          <img src="bilder/process.png" alt="Typeface process" loading="lazy">
+          <img src="bilder/typsnitt.png" alt="Typeface" loading="lazy">
+          <img src="bilder/visualisering.png" alt="Typeface in use" loading="lazy">
+          <img src="bilder/hs.bakgrund.png" alt="Typeface in use" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="trapp" aria-labelledby="trapp-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="trapp-title">Trapp</h2>
+            <span class="popup-cat">Logotype and visual identity</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+          <p><b>University year 1</b></p>
+          <p>Design for fictional architecture firm. Full visual identity including logo, colorscheme and copywrite by me.</p>
+      
+          
+         <br><br>
+          <p>The symbol, a stylized staircase in two shades of green, interacts with a clean uppercase Suisse Int’l Bold wordmark. Angled inward, the staircase conveys a welcoming, “coming home” feeling, but its orientation can be adapted in campaign material to symbolize upward progress or other narratives.</p>
+          <br>
+             <p class="tools"><b>Tools:</b> Adobe Illustrator, Photoshop, Figma</p>
+            </div>
+            <div class="popup-media">
+          <img src="bilder/trapp1.png" alt="Trapp" loading="lazy">
+          <img src="bilder/trapp2.png" alt="Trapp" loading="lazy">
+          <img src="bilder/webben.png" alt="Trapp website" loading="lazy">
+          <img src="bilder/tr.ig.png" alt="Trapp on Instagram" loading="lazy">
+          <img src="bilder/tr.enkel.png" alt="Trapp" loading="lazy">
+          <img src="bilder/trapp3.png" alt="Trapp" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="beatbox" aria-labelledby="beatbox-title">
+        <div class="popup">
+          <div class="popup-bar">
+            <h2 id="beatbox-title">Beatbox</h2>
+            <span class="popup-cat">Logotype and visual identity</span>
+            <button class="close" aria-label="Close">&times;</button>
+          </div>
+          <div class="popup-body">
+            <div class="popup-text">
+          <p><b>University year 2</b></p>
+          <p>Logo design for Hjärtstartarregistret project, with campaign for displaying defibrillators inside a heart shaped box in Stockholm.</p>
+          <p class="tools"><b>Tools:</b> Adobe Illustrator</p>
+          <h3>Brief</h3>
+          <p>Design a visual identity and campaign concept for Beat Box, a physical solution that improves access to defibrillators in public spaces. The identity should capture attention and resonate with adults in Stockholm.</p>
+          <h3>Result</h3>
+          <p>A simple and clean visual identity for Beat Box, combining the round typeface, a flexible logotype, and campaign "not just a box" to raise awareness of cardiac arrest.</p>
+            </div>
+            <div class="popup-media">
+          <img src="bilder/instabox.png" alt="Beat Box visualisation" loading="lazy">
+          <img src="bilder/beatboxlogga.png" alt="Beat Box logotype" loading="lazy">
+          <img src="bilder/beatboxposter.png" alt="Beat Box poster" loading="lazy">
+          <img src="bilder/beatboxfont1.png" alt="Beat Box typeface" loading="lazy">
+          <img src="bilder/beatboxtext1.png" alt="Beat Box" loading="lazy">
+          <img src="bilder/beatboxlogo.png" alt="Beat Box logo" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+
+<button class="arrow up to-top" title="Till toppen" aria-label="Till toppen" hidden></button>
+
+  <footer class="site-footer">
+    
+    <span>&copy; 2026 SBK</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

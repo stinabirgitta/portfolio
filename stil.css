@@ -1,0 +1,552 @@
+/* =========================================================
+   stil.css – en gemensam stilfil för hela portfolion
+   ========================================================= */
+
+/* ---------- Grund ---------- */
+:root {
+  --text: #121212;
+  --bg: #fafafa;
+  --muted: #110f0e;
+  --accent: #d6dc2e;               /* limegrön hover */
+  --gap: clamp(1.5rem, 4vw, 3rem);
+ --cursor: url("bilder/arrow-pointer-utility-fill-semibold-full.svg") 2 2, auto;
+  --cursor-hover: url("bilder/arrow-pointer-utility-fill-semibold-full-stor.svg") 3 3, pointer;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html { cursor: var(--cursor); }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+main { flex: 1; }
+a { color: inherit; }
+
+/* ---------- Header / footer ---------- */
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;          /* var baseline, men nu är båda sidorna flera rader höga */
+  padding: 2rem var(--gap);
+}
+
+.logo {
+  display: block;
+  width: min-content;               /* gör att varje ord hamnar på egen rad */
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 0.8;
+}
+
+.site-header nav {
+  display: flex;
+  flex-direction: column;           /* länkarna under varandra */
+  align-items: flex-end;            /* högerställda */
+  gap: 0.15rem;
+  font-size: 1.1rem;
+  line-height: 1.15;
+}
+
+.site-header a { text-decoration: none; }
+.site-header a:hover { color: var(--accent); }
+.site-header a[aria-current] { text-decoration: underline; text-underline-offset: 4px; }
+
+.site-footer {
+  display: flex;
+  justify-content:center;
+  align-items: baseline;
+  padding: 5rem var(--gap);
+}
+
+
+.site-footer { color: var(--muted); font-size: 0.9rem; }
+
+/* =========================================================
+   PROJEKT (galleri.html): rutnät + popup
+   ========================================================= */
+/* ---------- Rutnät ---------- */
+.work {
+  column-count: 4;
+  column-gap: 10px;
+  padding: 0;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  break-inside: avoid;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.thumb img,
+.thumb video { display: block; width: 100%; height: auto; }
+.thumb video { pointer-events: none; }
+
+.thumb:hover,
+.thumb:focus-visible {
+  transform: scale(1.08);
+  z-index: 1;
+
+}
+
+@media (max-width: 900px) {
+  .work { column-count: 2; }
+}
+
+
+/* ---------- Popup ---------- */
+
+dialog {
+  position: fixed;
+  inset: 50px;
+  width: auto;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg, #fff);
+  color: var(--text, #121212);
+}
+
+dialog::backdrop {
+  background: rgba(255, 254, 254, 0.874);
+}
+
+dialog[open] {
+  animation: pop 0.75s ease;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+dialog:focus,
+dialog:focus-visible,
+.popup:focus,
+.popup:focus-visible {
+  outline: none;
+}
+
+.popup {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Sticky topprad */
+
+/* Rad längst upp: titel + kategori under varandra, stäng till höger */
+.popup-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto;   /* text | stängknapp */
+  column-gap: 1rem;
+  row-gap: 0.2rem;                   /* avstånd mellan rubrik och kategori */
+  align-items: start;
+  padding: 1rem var(--gap);
+  padding-bottom: 0.25rem;   
+  background: var(--bg, #fff);
+}
+
+.popup-bar h2    { grid-column: 1; grid-row: 1; }
+.popup-cat       { grid-column: 1; grid-row: 2; }
+.close {
+  grid-column: 2;
+  grid-row: 1 / span 2;              /* knappen sträcker sig över båda raderna */
+  align-self: start;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.popup-bar h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.popup-cat {
+  font-size: 1rem;
+  color: var(--muted);
+  
+}
+
+
+
+/* Projektinnehåll */
+
+.popup-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  padding: 40px 30px var(--gap) 60px;
+  gap: 7rem;
+  align-items: stretch;
+}
+
+.popup-media {
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding-left: 20px;
+}
+
+.popup-media img,
+.popup-media video {
+  display: block;
+  width: 85%;
+  height: auto;
+}
+
+/* Text till vänster */
+.popup-text {
+  grid-column: 1;
+  grid-row: 1;
+  position: sticky;
+  top: 150px; /* justera efter popup-rubrikens höjd */
+  align-self: start;
+  transform: none;
+  max-height: calc(100dvh - 160px);
+  overflow-y: auto;
+}
+
+
+
+/* Text till höger, centrerad vertikalt och sticky */
+
+
+
+
+.popup-text h3 {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.popup-text .tools {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Mobil */
+
+@media (max-width: 800px) {
+  dialog {
+    inset: 30px;
+  }
+
+  .popup-body {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .popup-media {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .popup-text {
+    grid-column: 1;
+    grid-row: 2;
+    position: static;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  dialog[open] { animation: none; }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  dialog[open] { animation: none; }
+  .thumb { transition: none; }
+}
+
+/* =========================================================
+   SIDOR: start, about, contact
+   ========================================================= */
+
+
+
+/* =========================================================
+   STARTSIDAN
+   ========================================================= */
+body.startpage {
+  background: #e2e554 url("bilder/bakgrund1.png") center / auto 25vh no-repeat;
+  animation: bgBounce 1.5s ease-out forwards;
+}
+
+/* ---------- pilar ---------- */
+.arrow {
+  --size: 2rem;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  padding: 0;
+  border: 0;
+  background-color: currentColor;
+  -webkit-mask: url("bilder/pil.svg") center / contain no-repeat;
+          mask: url("bilder/pil.svg") center / contain no-repeat;
+  
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.arrow:hover { color: var(--accent); transform: scale(1.3); }
+
+/* Riktning (pilen i filen pekar åt höger) */
+.arrow.left { rotate: 180deg; }
+.arrow.up   { rotate: -90deg; }
+
+/* Storlek och placering */
+.start-header .arrow { --size: clamp(1.8rem, 5vw, 2.5rem); }
+.back-arrow { position: fixed; left: 1.5%; bottom: 2%; }
+.to-top     { position: fixed; bottom: 40px; right: 3%; }
+.to-top[hidden] { display: none; }
+
+@keyframes bgBounce {
+  /* Faller snabbt */
+  0% {
+    background-position: 10% -140vh;
+  }
+
+  /* Första landningen */
+  55% {
+    background-position: 25% 59%;
+  }
+
+  /* Långsam uppstuds */
+  72% {
+    background-position: 25% 55%;
+  }
+
+  /* Snabb landning igen */
+  100% {
+    background-position: 25% 59%;
+  }
+}
+
+.start-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rem 7rem 7rem;
+}
+.start-header h1 {
+  font-weight: 400;
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 0.8;
+}
+
+
+body.startpage .site-footer {
+  position: fixed;
+  inset: auto 0 0 0;
+}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+.about { padding: 0 var(--gap); overflow-x: clip; }
+
+
+
+/* Två lika breda halvor: bilden till vänster, texten till höger, 10px emellan */
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 4rem;
+}
+
+.intro img {
+  justify-self: end;                 /* bilden ligger mot mitten */
+  width: 20rem;
+  max-width: 100%;
+  display: block;
+  animation: slideInFromLeft 1.2s ease forwards;
+}
+
+.intro-text {
+  justify-self: start;               /* texten ligger mot mitten */
+  max-width: 24rem;
+  margin-top: 3rem;
+  animation: slideInFromRight 1.2s ease forwards;
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-100vw); }
+  to   { transform: translateX(0); }
+}
+@keyframes slideInFromRight {
+  from { transform: translateX(100vw); }
+  to   { transform: translateX(0); }
+}
+
+.intro-text,
+.cv {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+.intro-text p + p,
+.cv p + p { margin-top: 1rem; }
+
+/* Skills / Experience / Education */
+.cv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem var(--gap);              /* luft mellan raderna och mellan kolumnerna */
+  margin-top: 3rem;
+  padding: 3rem 7rem 5rem;
+}
+
+/* Sicksack: vänster, höger, vänster */
+.cv-skills     { grid-column: 1; grid-row: 1; }
+.cv-experience {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;      /* ← flyttar hela blocket till högerkanten av kolumnen */
+}
+.cv-education  { grid-column: 1; grid-row: 3; }
+
+/* "my work"-bilden fyller upp till höger på sista raden */
+.mywork { grid-column: 2; grid-row: 3; justify-self: end; align-self: end; }
+
+
+.cv ul { list-style: none; padding: 0; }
+.cv li + li { margin-top: 0.3rem; }
+
+.mywork {
+  display: block;
+  width: clamp(240px, 30vw, 350px);
+  translate: 0 6rem;              /* ← ersätter transform: translateY(6rem) */
+}
+.mywork img { display: block; width: 100%; height: auto; }
+.mywork:hover { animation: wiggle 0.8s ease-in-out; }
+
+@keyframes wiggle {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(6deg); }
+  50%  { transform: rotate(-6deg); }
+  75%  { transform: rotate(4deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Liten logga som glider in uppe till vänster när man scrollat */
+.corner-image {
+  position: fixed;
+  top: 20px;
+  left: -100px;
+  width: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: left 0.6s ease, opacity 0.6s ease;
+  z-index: 999;
+}
+.corner-image.visible { left: 25px; opacity: 1; }
+
+
+
+.to-top[hidden] { display: none; }
+/* =========================================================
+   CONTACT
+   ========================================================= */
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: var(--gap);
+  text-align: center;
+}
+.contact video {
+  width: clamp(14rem, 30vw, 28rem);
+  height: 40vh;
+  object-fit: cover;
+  pointer-events: none;
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 3rem;
+  font-size: clamp(1rem, 4vw, 1.1rem);
+}
+.contact-links a:hover { color: var(--accent); }
+
+
+
+
+
+/* =========================================================
+   MOBIL
+   ========================================================= */
+@media (max-width: 968px) {
+
+  .mywork { display: none; }
+  .cv { grid-template-columns: 1fr; padding: 0 var(--gap); }
+  .cv > * { grid-column: 1; grid-row: auto; }   /* allt under varandra */
+  
+}
+
+
+@media (max-width: 880px) {
+ 
+     body.startpage {
+    background-image: none;     /* ← ingen bakgrundsbild i mobilen */
+    animation: none;            /* ← ingen animation heller, eftersom det inte finns något att animera */
+  }
+  .start-header { padding: 1.8rem; }
+
+  .intro { grid-template-columns: 1fr; gap: 2rem; }
+  .intro-text { order: 1; margin-top: 0; max-width: none; justify-self: start; }
+  .intro img  { order: 2; width: min(70%, 22rem); justify-self: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.startpage, .intro img, .mywork:hover { animation: none; }
+}
+
+/* Större pekare över allt som går att klicka på */
+a, button, .thumb, .arrow, .close, .to-top {
+  cursor: var(--cursor-hover);
+}

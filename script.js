@@ -1,189 +1,44 @@
-console.log("JavaScript fungerar!");
+// =========================
+// Projekt-popup (galleri.html)
+// =========================
+
+function openProject(dialog) {
+  dialog.showModal();
+  dialog.querySelector('.popup').scrollTop = 0;
+  dialog.querySelectorAll('video').forEach(v => v.play().catch(() => {}));
+  history.replaceState(null, '', '#' + dialog.id);
+}
+
+document.querySelectorAll('[data-open]').forEach(btn => {
+  btn.addEventListener('click', () => openProject(document.getElementById(btn.dataset.open)));
+});
+
+document.querySelectorAll('dialog').forEach(dialog => {
+  dialog.querySelector('.close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });  // klick utanför
+  dialog.addEventListener('close', () => {                                              // Esc, kryss, utanför
+    dialog.querySelectorAll('video').forEach(v => v.pause());
+    history.replaceState(null, '', location.pathname + location.search);
+  });
+});
+
+// galleri.html#trapp öppnar projektet direkt
+const linked = document.getElementById(location.hash.slice(1));
+if (linked && linked.matches('dialog')) openProject(linked);
+
 
 // =========================
-// DOM ready
+// About-sidan: logga + knapp till toppen
 // =========================
-document.addEventListener('DOMContentLoaded', () => {
+const corner = document.querySelector('.corner-image');
+const toTop  = document.querySelector('.to-top');
 
-  // --- Failsafe för video ---
-  const videos = document.querySelectorAll("video");
-  videos.forEach(video => {
-    if (video) {
-      video.muted = true;
-    }
-  });
-
-
-  // =========================
-  // About page animation
-  // =========================
-  if (window.location.pathname.includes("about")) {
-    const circle1 = document.createElement("div");
-    const circle2 = document.createElement("div");
-    circle1.classList.add("bg-circle", "circle1");
-    circle2.classList.add("bg-circle", "circle2");
-    document.body.appendChild(circle1);
-    document.body.appendChild(circle2);
-
-    const aboutImage = document.getElementById('aboutImage');
-    if (aboutImage) {
-      aboutImage.classList.add('slide-in-bottom');
-    }
-  }
-
-  // =========================
-  // Startpage animation
-  // =========================
-  if (document.body.classList.contains('startpage')) {
-    document.body.classList.add('bg-slide-up');
-  }
-
-  // =========================
-  // Desktop books
-  // =========================
-  document.querySelectorAll('.item').forEach((item) => {
-    const book = item.querySelector('.book');
-    if (!book) return;
-
-    const pages = book.querySelectorAll('.page');
-    const prevBtn = item.querySelector('.prev');
-    const nextBtn = item.querySelector('.next');
-    let currentPage = 0;
-
-    if (!pages.length || !prevBtn || !nextBtn) return;
-
-    function showPage(index) {
-      pages.forEach((page, i) => {
-        page.classList.toggle('active', i === index);
-      });
-    }
-
-    prevBtn.addEventListener('click', () => {
-      currentPage = (currentPage - 1 + pages.length) % pages.length;
-      showPage(currentPage);
-    });
-
-    nextBtn.addEventListener('click', () => {
-      currentPage = (currentPage + 1) % pages.length;
-      showPage(currentPage);
-    });
-
-    showPage(currentPage);
-  });
-
-  // =========================
-  // Mobile books navigation + swipe
-  // =========================
-  document.querySelectorAll('.item-mobile').forEach(item => {
-    const book = item.querySelector('.book-mobile');
-    if (!book) return;
-
-    const pages = book.querySelectorAll('.page-mobile');
-    if (!pages.length) return;
-
-    let current = 0;
-    let startX = 0;
-    let isSwiping = false;
-
-    const prevBtn = item.querySelector('.prev-mobile');
-    const nextBtn = item.querySelector('.next-mobile');
-
-    function showPage(index) {
-      pages.forEach((p, i) => p.classList.toggle('active', i === index));
-    }
-
-    // Button navigation
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        current = (current - 1 + pages.length) % pages.length;
-        showPage(current);
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        current = (current + 1) % pages.length;
-        showPage(current);
-      });
-    }
-
-    // Swipe navigation
-    book.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-      isSwiping = false;
-    });
-
-    book.addEventListener('touchmove', (e) => {
-      const diffX = e.touches[0].clientX - startX;
-      if (Math.abs(diffX) > 10) isSwiping = true;
-    });
-
-    book.addEventListener('touchend', (e) => {
-      if (!isSwiping) return;
-      const endX = e.changedTouches[0].clientX;
-      const diffX = endX - startX;
-
-      if (Math.abs(diffX) > 50) { // Minimum swipe distance
-        if (diffX > 0) {
-          current = (current - 1 + pages.length) % pages.length; // swipe right → prev
-        } else {
-          current = (current + 1) % pages.length; // swipe left → next
-        }
-        showPage(current);
-      }
-      isSwiping = false;
-    });
-
-    // Show first page initially
-    showPage(current);
-  });
-
-  // =========================
-  // Scroll-to-top-knapp
-  // =========================
-  const scrollToTopBtn = document.getElementById("scrollToTop");
-  if (scrollToTopBtn) {
-    window.addEventListener("scroll", () => {
-      scrollToTopBtn.style.display = window.scrollY > 700 ? "block" : "none";
-    });
-
-    scrollToTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-
-      document.querySelectorAll('.item').forEach((item) => {
-        const book = item.querySelector('.book');
-        if (!book) return;
-
-        const pages = book.querySelectorAll('.page');
-        pages.forEach((page, i) => {
-          page.classList.toggle('active', i === 0);
-        });
-      });
-    });
-  }
-
-  // =========================
-  // Gallery-page bakgrundsmörkning
-  // =========================
-  if (document.body.classList.contains('gallery-page')) {
-    window.addEventListener('scroll', function() {
-      const maxDarkness = 0.06;
-      const maxScroll = 500;
-      let darkness = window.scrollY / maxScroll;
-      if (darkness > maxDarkness) darkness = maxDarkness;
-      document.body.style.backgroundColor = `rgba(0, 0, 0, ${darkness})`;
-    });
-  }
-
-  // =========================
-  // Corner image synlighet
-  // =========================
-  window.addEventListener('scroll', function() {
-    const cornerImg = document.querySelector('.corner-image');
-    if (cornerImg) {
-      if (window.scrollY > 140) cornerImg.classList.add('visible');
-      else cornerImg.classList.remove('visible');
-    }
-  });
-
-}); // end DOMContentLoaded
+if (corner || toTop) {
+  const onScroll = () => {
+    if (corner) corner.classList.toggle('visible', window.scrollY > 140);
+    if (toTop)  toTop.hidden = window.scrollY < 500;
+  };
+  if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}

@@ -1,125 +1,82 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Stina Karlsson</title>
-  <link rel="stylesheet" href="min.css?v=2">
-   <link rel="icon" href="bilder/favicon.png" type="image/png">
- 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stina Karlsson – About</title>
+  <link rel="stylesheet" href="stil.css">
+  <link rel="icon" href="bilder/favicon.png" type="image/png">
 </head>
 <body>
-  <header>
-    <h2><a href="index.html">Stina <br> Birgitta <br> Karlsson</a></h2>
-    <nav class="navbar2">
-        <ul class="nav-links">
-          <li><a href="about.html">About</a></li>
-          <li><a href="galleri.html">Projects</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">Stina Birgitta Karlsson</a>
+    <nav> 
+      <a href="gallery.html">Projects</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
-  <main>
+  <main class="about">
 
 
-  <h3 style="text-align: center;">Hi! </h3>
-   
 
-    <div class="about-section">
-        <img id="aboutImage" src="bilder/peace.png" alt="picture of me" class="about-img" />
-        <p class="about-text">
-        
-        <b>I’m passionate about making things nice to look at, and about interaction and movement - physical, digital and personal.
-            </b><br>
-            <br>
+    <section class="intro">
+      <img src="bilder/peace.png" alt="Picture of me">
+      <div class="intro-text">
+       
+        <p><b> I like making things that look good and move well, in the physical world, on screens and everywhere in between.</b></p>
+        <p>I enjoy working across disciplines – layout, typography, technical systems, interaction design, UI and exploring how design can shape the world around us.</p>
+        <p>My goal is work that’s clear, polished and fun.</p>
+      </div>
+    </section>
 
-            I enjoy working across disciplines – layout, illustration, typography, interaction design and user interface design. 
-            I love learning new things and exploring how design can shape the world around us.
-            
-            <br> <br>
-            I aim to bring clarity, professionalism and playfulness to my work.
-          </p>
-  
-        </div>
+    <section class="cv">
 
-        
+  <div class="cv-skills">
+    <h2>Skills</h2>
+    <p>Illustrator, Figma, InDesign, Photoshop, AfterEffects
+       <br>HTML, CSS, JavaScript, SQL
+       <br>User research, Service design</p>
+  </div>
 
-   <div class="text-box">
+  <div class="cv-experience">
+    <h2>Experience</h2>
+    <ul>
+      <li><b>2026</b> Freelance – Graphic designer</li>
+      <li><b>2026</b> ILT Education – Graphic designer</li>
+      <li><b>2026</b> ILT Education – Internship / thesis project</li>
+      <li><b>2025</b> Supermarket Art Fair – Volunteering</li>
+      <li><b>2025</b> Språkmuseet – Digital interaction in museum</li>
+      <li><b>2025</b> Huddinge kommun – Service design</li>
+    </ul>
+  </div>
 
-           <h5>Skills</h5>
-  
-     <p> Illustrator, InDesign, Figma, Photoshop, AfterEffects  
-    <br> <br>
-    HTML, CSS, Javascript, SQL 
-    <br> <br>
-    User research, Service design
-    </p>
-        
+  <div class="cv-education">
+    <h2>Education</h2>
+    <p><b>Södertörn University</b><br>
+       Bachelor in media technology. IT, media and design. August 2023 – June 2026.
+       <br><b>Stockholm University</b><br>
+       Media and communication. August 2022 – June 2023.
+       <br><b>Balettakademien Stockholm</b><br>
+       Professional Dancers Education. August 2019 – May 2021.</p>
+  </div>
 
-         <h5>Experience</h5>
-         <p>
-            <b>2026 </b>ILT Education – Graphic designer 
-          <br>
-
-            <b>2026 </b>ILT Education – Internship / thesis project
-          <br>
-           
-          <b>2025 </b>Supermarket Art Fair – Volunteering
-          <br>
-          
-          <b>2025 </b>Språkmuseet – Digital interaction in museum 
-          <br>
-          
-          <b>2025 </b>Huddinge kommun – Service design 
-          <br>
-          
-          
-         <b>2024 </b>Hjärtstartarregistret – UX project
-          
-          </p>
-          
-          <h5> Education </h5>
-        <p>
-          <b>Södertörn University</b><br>
-          Bachelor in media technology. IT, media and design. August 2023 - june 2026. 
-          </p>
-           <p>
-          <b>Stockholm University </b><br>
-          Media and communication. August 2022 - june 2023. 
-         <br><br>
-          <b>Balettakademien Stockholm</b> <br>
-          Professional Dancers Education. August 2019 - may 2021.
-        </p>
-       </div>
-     
-       <div class="mywork">
-  <a href="galleri.html">
-    <img id="myworkImage" src="bilder/mywork.png" alt="Projects" />
+  <a class="mywork" href="gallery.html">
+    <img src="bilder/mywork.png" alt="Projects">
   </a>
-</div>
-<img src="bilder/sbk.png" alt="Logo" class="corner-image">
-  <button id="scrollToTop" title="Till toppen">↑</button>
+
+</section>
+
   </main>
+<button class="arrow up to-top" title="Till toppen" aria-label="Till toppen" hidden></button>
 
-
-<footer>
-  
-     <footer class="social-footer">
-  <a href="mailto:stinabirgittak@gmail.com" title="Mail">
-    <svg width="28" height="28" fill="currentColor" viewBox="0 0 28 28">
-      <path d="M2 4h20v16H2V4zm10 7L3 6v12h18V6l-9 5z" />
-    </svg>
-  </a>
-  <a href="https://www.linkedin.com/in/stina-karlsson-0956a5368/" target="_blank" title="LinkedIn">
-    <svg width="28" height="28" fill="currentColor" viewBox="0 0 28 28">
-      <path d="M4 4h4v4H4V4zm0 6h4v10H4V10zm6 0h4v1.5c.5-.9 1.5-1.5 2.5-1.5 2.5 0 3 1.6 3 3.7V20h-4v-5.1c0-1-.4-1.9-1.5-1.9s-1.5.8-1.5 1.9V20h-4V10z"/>
-    </svg>
-  </a>
+  <footer class="site-footer">
+   
+    <span>&copy; 2026 SBK</span>
   </footer>
-  <p>&copy; 2025 SBK</p>
-   </footer>
-  <script src="script.js?v=3"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
